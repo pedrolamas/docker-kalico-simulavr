@@ -1,16 +1,16 @@
-# docker-klipper-simulavr
+# docker-kalico-simulavr
 
-[![Project Maintenance](https://img.shields.io/maintenance/yes/2024.svg)](https://github.com/pedrolamas/docker-klipper-simulavr 'GitHub Repository')
-[![License](https://img.shields.io/github/license/pedrolamas/docker-klipper-simulavr.svg)](https://github.com/pedrolamas/docker-klipper-simulavr/blob/master/LICENSE 'License')
+[![Project Maintenance](https://img.shields.io/maintenance/yes/2024.svg)](https://github.com/pedrolamas/docker-kalico-simulavr 'GitHub Repository')
+[![License](https://img.shields.io/github/license/pedrolamas/docker-kalico-simulavr.svg)](https://github.com/pedrolamas/docker-kalico-simulavr/blob/master/LICENSE 'License')
 
-[![Release](https://github.com/pedrolamas/docker-klipper-simulavr/workflows/Release/badge.svg)](https://github.com/pedrolamas/docker-klipper-simulavr/actions 'Build Status')
+[![Release](https://github.com/pedrolamas/docker-kalico-simulavr/workflows/Release/badge.svg)](https://github.com/pedrolamas/docker-kalico-simulavr/actions 'Build Status')
 
 [![Follow pedrolamas on Twitter](https://img.shields.io/twitter/follow/pedrolamas?label=Follow%20@pedrolamas%20on%20Twitter&style=social)](https://twitter.com/pedrolamas)
 [![Follow pedrolamas on Mastodon](https://img.shields.io/mastodon/follow/109365776481898704?label=Follow%20@pedrolamas%20on%20Mastodon&domain=https%3A%2F%2Fhachyderm.io&style=social)](https://hachyderm.io/@pedrolamas)
 
-Simple Docker image running [Klipper](https://github.com/Klipper3d/klipper/) with Simulavr, [Moonraker](https://github.com/Arksine/moonraker/), and [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer).
+Simple Docker image running [Kalico](https://github.com/KalicoCrew/kalico/) with Simulavr, [Moonraker](https://github.com/Arksine/moonraker/), and [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer).
 
-This repo will run a GitHub action every hour to check for new code on the "master" branches of the Klipper and Moonraker repositories, and creates a new Docker image if there are any modifications.
+This repo will run a GitHub action every hour to check for new code on the "master" branches of the Kalico and Moonraker repositories, and creates a new Docker image if there are any modifications.
 
 ## Usage
 
@@ -18,9 +18,9 @@ Create and run the new container as you would normally do:
 
 ```sh
 docker run -d \
-  --name klipper-simulavr \
+  --name kalico-simulavr \
   --net=host \
-  ei99070/docker-klipper-simulavr
+  ei99070/docker-kalico-simulavr
 ```
 
 This will start Klipper with a simulated Atmel ATmega micro-controller, Moonraker on port 7125, and mjpg-streamer on port 8080.
@@ -29,10 +29,10 @@ If you need to remap the default ports, run the container under the bridge netwo
 
 ```sh
 docker run -d \
-  --name klipper-simulavr \
+  --name kalico-simulavr \
   -p 7125:7125 \
   -p 8080:8080 \
-  ei99070/docker-klipper-simulavr
+  ei99070/docker-kalico-simulavr
 ```
 
 The default configuration files used can be found on the [klipper_config](/klipper_config) folder.
@@ -66,10 +66,10 @@ For example, here is how to override the default `printer.cfg`:
 
 ```sh
 docker run -d \
-  --name klipper-simulavr \
+  --name kalico-simulavr \
   --net=host \
   -v my-printer.cfg:/printer/printer_data/config/printer.cfg \
-  ei99070/docker-klipper-simulavr
+  ei99070/docker-kalico-simulavr
 ```
 
 ## Klippy Extras
@@ -77,7 +77,6 @@ docker run -d \
 Some Klipper extra modules are included as part of this image, specifically:
 
 - `virtual_pins` - https://github.com/pedrolamas/klipper-virtual-pins
-- `gcode_shell_command` - https://github.com/th33xitus/kiauh
 
 ## Convenience scripts
 
@@ -90,13 +89,13 @@ The image includes the following convenience scripts:
 Once the Docker container has started, these can be easily run:
 
 ```sh
-docker exec -it klipper-simulavr enable-timelapse
+docker exec -it kalico-simulavr enable-timelapse
 ```
 
 ## Available tags
 
-- `latest`: points to Klipper and Moonraker "master" branches
-- `klipper-sha-<hash>`: points to the Klipper GitHub commit hash
+- `latest`: points to Kalico and Moonraker "master" branches
+- `klipper-sha-<hash>`: points to the Kalico GitHub commit hash
 - `moonraker-sha-<hash>`: points to the Moonraker GitHub commit hash
 
 ## FAQ
@@ -107,10 +106,10 @@ Start the container with `SIMULAVR_PACING_RATE` environment variable set to some
 
 ```sh
 docker run -d \
-  --name klipper-simulavr \
+  --name kalico-simulavr \
   --net=host \
   -e SIMULAVR_PACING_RATE=0.2
-  ei99070/docker-klipper-simulavr
+  ei99070/docker-kalico-simulavr
 ```
 
 ## Support my work
