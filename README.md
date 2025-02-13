@@ -10,7 +10,7 @@
 
 Simple Docker image running [Kalico](https://github.com/KalicoCrew/kalico/) with Simulavr, [Moonraker](https://github.com/Arksine/moonraker/), and [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer).
 
-This repo will run a GitHub action every hour to check for new code on the "master" branches of the Kalico and Moonraker repositories, and creates a new Docker image if there are any modifications.
+This repo will run a GitHub action every hour to check for new code on the default branches of the Kalico and Moonraker repositories, and creates a new Docker image if there are any modifications.
 
 ## Usage
 
@@ -94,7 +94,7 @@ docker exec -it kalico-simulavr enable-timelapse
 
 ## Available tags
 
-- `latest`: points to Kalico and Moonraker "master" branches
+- `latest`: points to Kalico and Moonraker default branches
 - `klipper-sha-<hash>`: points to the Kalico GitHub commit hash
 - `moonraker-sha-<hash>`: points to the Moonraker GitHub commit hash
 
