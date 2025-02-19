@@ -1,11 +1,11 @@
 # docker-kalico-simulavr
 
-[![Project Maintenance](https://img.shields.io/maintenance/yes/2024.svg)](https://github.com/pedrolamas/docker-kalico-simulavr 'GitHub Repository')
+[![Project Maintenance](https://img.shields.io/maintenance/yes/2025.svg)](https://github.com/pedrolamas/docker-kalico-simulavr 'GitHub Repository')
 [![License](https://img.shields.io/github/license/pedrolamas/docker-kalico-simulavr.svg)](https://github.com/pedrolamas/docker-kalico-simulavr/blob/master/LICENSE 'License')
 
 [![Release](https://github.com/pedrolamas/docker-kalico-simulavr/workflows/Release/badge.svg)](https://github.com/pedrolamas/docker-kalico-simulavr/actions 'Build Status')
 
-[![Follow pedrolamas on Twitter](https://img.shields.io/twitter/follow/pedrolamas?label=Follow%20@pedrolamas%20on%20Twitter&style=social)](https://twitter.com/pedrolamas)
+[![Follow pedrolamas.com on Bluesky](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpublic.api.bsky.app%2Fxrpc%2Fapp.bsky.actor.getProfile%2F%3Factor%3Dpedrolamas.com&query=%24.followersCount&style=social&logo=bluesky&label=Follow%20%40pedrolamas.com)](https://bsky.app/profile/pedrolamas.com)
 [![Follow pedrolamas on Mastodon](https://img.shields.io/mastodon/follow/109365776481898704?label=Follow%20@pedrolamas%20on%20Mastodon&domain=https%3A%2F%2Fhachyderm.io&style=social)](https://hachyderm.io/@pedrolamas)
 
 Simple Docker image running [Kalico](https://github.com/KalicoCrew/kalico/) with Simulavr, [Moonraker](https://github.com/Arksine/moonraker/), and [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer).
