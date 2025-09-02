@@ -7,7 +7,7 @@ ARG MOONRAKER_REPOSITORY=https://github.com/Arksine/moonraker
 ARG KLIPPER_SHA
 ARG MOONRAKER_SHA
 
-FROM debian:bookworm AS build
+FROM debian:trixie AS build
 
 ARG KLIPPER_REPOSITORY
 ARG MOONRAKER_REPOSITORY
@@ -17,7 +17,7 @@ ARG MOONRAKER_SHA
 RUN <<eot
   set -e
   apt-get update -qq
-  apt-get install -y --no-install-recommends --no-install-suggests \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --no-install-suggests \
     avr-libc \
     cmake \
     fakeroot \
@@ -32,6 +32,7 @@ RUN <<eot
     make \
     python3 \
     python3-dev \
+    python3-setuptools \
     python3-virtualenv \
     rst2pdf \
     swig \
@@ -43,10 +44,10 @@ WORKDIR /build
 
 RUN <<eot
   set -e
-  git clone git://git.savannah.nongnu.org/simulavr.git
+  git clone https://github.com/pedrolamas/simulavr
   (
     cd simulavr
-    make cfgclean python build
+    CXXFLAGS="-Wno-overloaded-virtual" make cfgclean python build
     (
       cd build/pysimulavr
       mkdir pysimulavr
@@ -70,7 +71,7 @@ RUN <<eot
     rm -rf .git lib out src
   )
   virtualenv klippy-env
-  ./klippy-env/bin/pip install -r klipper/scripts/klippy-requirements.txt
+  ./klippy-env/bin/pip install --no-compile --no-cache-dir -r klipper/scripts/klippy-requirements.txt
   ./klippy-env/bin/python klipper/klippy/chelper/__init__.py
 eot
 
@@ -83,7 +84,7 @@ RUN <<eot
     rm -rf .git
   )
   virtualenv moonraker-env
-  ./moonraker-env/bin/pip install -r moonraker/scripts/moonraker-requirements.txt
+  ./moonraker-env/bin/pip install --no-compile --no-cache-dir -r moonraker/scripts/moonraker-requirements.txt
 eot
 
 RUN <<eot
@@ -136,15 +137,12 @@ RUN <<eot
   mv /build/moonraker-timelapse/component/timelapse.py ./moonraker/moonraker/components/timelapse.py
   mv /build/moonraker-timelapse/klipper_macro/timelapse.cfg ./printer_data/config/printer/timelapse.cfg
   virtualenv klippy-env
-  ./klippy-env/bin/python -m compileall klipper/klippy
   virtualenv moonraker-env
-  ./moonraker-env/bin/python -m compileall moonraker/moonraker
-  python3 -m compileall pysimulavr
 eot
 
 ## final
 
-FROM debian:bookworm-slim AS final
+FROM debian:trixie-slim AS final
 
 ARG KLIPPER_REPOSITORY
 ARG MOONRAKER_REPOSITORY
@@ -164,7 +162,7 @@ COPY --from=build /printer .
 RUN <<eot
   set -e
   apt-get update -qq
-  apt-get install -y --no-install-recommends --no-install-suggests \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --no-install-suggests \
     ca-certificates \
     curl \
     iproute2 \
