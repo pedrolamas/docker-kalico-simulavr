@@ -1,6 +1,6 @@
 # docker-kalico-simulavr
 
-[![Project Maintenance](https://img.shields.io/maintenance/yes/2025.svg)](https://github.com/pedrolamas/docker-kalico-simulavr 'GitHub Repository')
+[![Project Maintenance](https://img.shields.io/maintenance/yes/2026.svg)](https://github.com/pedrolamas/docker-kalico-simulavr 'GitHub Repository')
 [![License](https://img.shields.io/github/license/pedrolamas/docker-kalico-simulavr.svg)](https://github.com/pedrolamas/docker-kalico-simulavr/blob/master/LICENSE 'License')
 
 [![Release](https://github.com/pedrolamas/docker-kalico-simulavr/workflows/Release/badge.svg)](https://github.com/pedrolamas/docker-kalico-simulavr/actions 'Build Status')
